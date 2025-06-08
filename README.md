@@ -26,8 +26,8 @@
 
 ## 📸 Screenshots
 
-![Homepage](.client/screenshots/homepage.png)
-![Dashboard](.client/screenshots/dashboard.png)
+![Homepage](./client/screenshots/homepage.png)
+![Dashboard](./client/screenshots/dashboard.png)
 
 ---
 
