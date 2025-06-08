@@ -1,56 +1,7 @@
 const Transaction = require('../models/Transaction');
 const Holding = require('../models/Holding');
 
-// POST /holdings/:id/transactions
-exports.addTransaction = async (req, res) => {
-  try {
-    const holding = await Holding.findById(req.params.id).populate('portfolio');
-
-    // Auth check
-    if (!holding || holding.portfolio.user.toString() !== req.user._id.toString()) {
-      return res.status(403).json({ message: 'Unauthorized or holding not found' });
-    }
-
-    const { type, quantity, price } = req.body;
-
-    // Validate input
-    if (!['buy', 'sell'].includes(type) || quantity <= 0 || price <= 0) {
-      return res.status(400).json({ message: 'Invalid transaction data' });
-    }
-
-    // Create transaction
-    const transaction = await Transaction.create({
-      holding: holding._id,
-      type,
-      quantity,
-      price
-    });
-
-    // Auto-update holding on BUY
-    if (type === 'buy') {
-      const totalQty = holding.quantity + quantity;
-
-      const newAvgPrice =
-        ((holding.quantity * holding.avgBuyPrice) + (quantity * price)) / totalQty;
-
-      holding.quantity = totalQty;
-      holding.avgBuyPrice = parseFloat(newAvgPrice.toFixed(2));
-      await holding.save();
-    }
-
-    res.status(201).json({
-      message: 'Transaction added successfully',
-      transaction,
-      updatedHolding: holding
-    });
-
-  } catch (err) {
-    console.error('❌ Add Transaction Error:', err.message);
-    res.status(500).json({ message: 'Server error' });
-  }
-};
-
-// GET /holdings/:id/transactions
+// GET /api/transactions/holdings/:id
 exports.getTransactions = async (req, res) => {
   try {
     const holding = await Holding.findById(req.params.id).populate('portfolio');
@@ -59,11 +10,23 @@ exports.getTransactions = async (req, res) => {
       return res.status(403).json({ message: 'Unauthorized or holding not found' });
     }
 
-    const transactions = await Transaction.find({ holding: req.params.id }).sort({ executedAt: -1 });
-    res.json(transactions);
+    const transactions = await Transaction.find({ holding: holding._id }).sort({ executedAt: -1 });
 
+    // Append symbol to each transaction response
+    const response = transactions.map((tx) => ({
+      _id: tx._id,
+      holding: tx.holding,
+      type: tx.type,
+      quantity: tx.quantity,
+      price: tx.price,
+      executedAt: tx.executedAt,
+      notes: tx.notes,
+      symbol: holding.symbol    // <-- add symbol here
+    }));
+
+    res.json(response);
   } catch (err) {
-    console.error('❌ Get Transactions Error:', err.message);
+    console.error('❌ Transaction Fetch Error:', err.message);
     res.status(500).json({ message: 'Server error' });
   }
 };

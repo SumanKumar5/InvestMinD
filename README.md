@@ -1,121 +1,187 @@
-# 🧠 InvestMinD (Full Stack Capstone Project)
+# 💼 InvestMinD – Full-Stack Smart Investment Tracker (MERN + Gemini AI)
 
-[![Node.js](https://img.shields.io/badge/Node.js-18.x-green?logo=node.js)](https://nodejs.org)
-[![Express](https://img.shields.io/badge/Express-4.x-black?logo=express)](https://expressjs.com)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-success?logo=mongodb)](https://www.mongodb.com/atlas)
-[![JWT](https://img.shields.io/badge/Auth-JWT-orange?logo=jsonwebtokens)](https://jwt.io)
-[![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react)](https://react.dev)
-[![Tailwind](https://img.shields.io/badge/TailwindCSS-3.4.1-06B6D4?logo=tailwindcss)](https://tailwindcss.com)
-[![Vite](https://img.shields.io/badge/Vite-5.2-purple?logo=vite)](https://vitejs.dev)
-[![AI Powered](https://img.shields.io/badge/Gemini_AI-Google-blue?logo=google)](https://deepmind.google/technologies/gemini/)
-
----
-
-**InvestMinD** is a full-stack AI-powered investment management application built using the MERN stack, featuring:
-- Secure portfolio management
-- Real-time stock prices
-- Financial analytics
-- Excel export
-- Gemini-powered investment insights
+[![Node.js](https://img.shields.io/badge/Node.js-18.x-green?logo=node.js)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express.js-Backend-lightgrey?logo=express)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?logo=mongodb)](https://www.mongodb.com/atlas)
+[![React](https://img.shields.io/badge/React-18-blue?logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.x-teal?logo=tailwindcss)](https://tailwindcss.com/)
+[![JWT Auth](https://img.shields.io/badge/Auth-JWT-blue)](https://jwt.io/)
+[![Deployed on DigitalOcean](https://img.shields.io/badge/Backend-DigitalOcean-blue?logo=digitalocean)](https://www.digitalocean.com/)
+[![Deployed on Vercel](https://img.shields.io/badge/Frontend-Vercel-black?logo=vercel)](https://vercel.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 ---
 
-## 🚀 Key Features
-
-- **Secure User Authentication** (JWT-based)
-- **Portfolio & Holdings Management** — Add and track multiple assets including stocks and crypto
-- **Transaction Logging** — Automatic average price recalculation for each buy/sell
-- **Real-Time Price Integration** — Fetch live market prices via Twelve Data API
-- **Performance Analytics** — Calculate total investment, current value, P&L, CAGR, and sector exposure
-- **Excel Export** — Download clean and styled `.xlsx` files with financial breakdown
-- **AI Insights** — Generate personalized summaries using Gemini (Google) API
-- **Scalable Architecture** — Monorepo structure with plans for a CoinMarketCap-style UI
+**InvestMinD** is a powerful, modern investment dashboard for tracking portfolios, managing holdings, analyzing performance, and receiving Gemini-powered AI insights. Built with a complete **MERN stack** and deployed on **DigitalOcean** (backend) + **Vercel** (frontend).
 
 ---
 
-## 📁 Folder Structure
+## 🌐 Live Demo
+
+🔗 [https://www.investmind.live](https://www.investmind.live)
+
+
+---
+
+## 📸 Screenshots
+
+![Homepage](.client/screenshots/homepage.png)
+![Dashboard](.client/screenshots/dashboard.png)
+
+---
+
+## 🧱 Project Structure
 
 ```
-/InvestMinD
-├── /server         # Backend (Node + Express + MongoDB)
-│   ├── controllers/
-│   ├── routes/
-│   ├── models/
-│   ├── middleware/
-│   ├── services/
-│   └── index.js
-├── /client         # Frontend (React + Tailwind + Vite) 
-└── README.md
+investmind-monorepo/
+├── server/        # Node.js + Express + MongoDB backend
+├── client/       # React + TypeScript + Vite + Tailwind frontend
 ```
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Core Features
 
-| Layer     | Technologies                                      |
-|-----------|---------------------------------------------------|
-| Frontend  | React 18, Vite, TypeScript, Tailwind CSS (planned)|
-| Backend   | Node.js, Express.js, MongoDB Atlas, JWT           |
-| AI Layer  | Google Gemini API                                 |
-| Market Data | Twelve Data API                                |
-| Reports   | ExcelJS                                           |
-| Tools     | GitHub, Postman, Vercel (frontend), Heroku        |
-
----
-
-## 📡 API Endpoints Overview
-
-### Authentication
-- `POST /auth/signup` — Create account
-- `POST /auth/login` — Get JWT token
-
-### Portfolio
-- `POST /portfolios` — Create new portfolio
-- `GET /portfolios` — Get all user portfolios
-- `GET /portfolios/:id/stats` — Financial stats (P&L, value)
-- `GET /portfolios/:id/analytics` — CAGR and sector analysis
-
-### Holdings
-- `POST /portfolios/:id/holdings` — Add holding
-- `GET /portfolios/:id/holdings` — Get all holdings
-- `DELETE /holdings/:id` — Remove holding
-
-### Transactions
-- `POST /holdings/:id/transactions` — Log a buy/sell
-- `GET /holdings/:id/transactions` — View transaction history
-
-### AI + Export
-- `POST /ai/asset-summary` — AI summary for a specific stock
-- `GET /insight` — AI summary for full portfolio
-- `GET /price/:symbol` — Live stock/crypto price
-- `GET /portfolios/:id/export/excel` — Excel download (.xlsx)
+- 🔐 Auth: JWT-based login/signup with OTP email verification
+- 📁 Portfolio: Create/delete portfolios with real-time stats
+- 💼 Holdings: Add/delete holdings, auto price updates, P/L logic
+- 📊 Charts: Time-series, donut, and best/worst performer visualizations
+- 🤖 Gemini AI: AI-powered summaries per stock or portfolio
+- 📉 Price API: Twelve Data integration for live price fetching
+- 📤 Export: Download .xlsx Excel reports with formatting
+- 📱 Fully responsive UI with dark mode and Framer Motion animations
 
 ---
 
-## 📦 Installation
+## 📦 Tech Stack
+
+| Layer     | Tech                             |
+|-----------|----------------------------------|
+| Frontend  | React 18, TypeScript, Tailwind, Vite, Recharts |
+| Backend   | Node.js, Express, MongoDB, JWT, Nodemailer |
+| APIs      | Twelve Data API, Google Gemini AI |
+| Hosting   | DigitalOcean App Platform (backend), Vercel (frontend) |
+| DevTools  | Docker, ESLint, Prettier, GitHub Actions |
+
+---
+
+## 📚 API Documentation
+
+All APIs are prefixed with `/api`.
+
+### 🔐 Auth
+
+| Method | Endpoint         | Description                      |
+|--------|------------------|----------------------------------|
+| POST   | `/auth/signup`   | Register + send OTP              |
+| POST   | `/auth/login`    | Login with email & password      |
+| POST   | `/auth/verify-email` | Verify OTP                 |
+| POST   | `/auth/resend-otp`   | Resend verification OTP     |
+| GET    | `/auth/me`       | Get logged-in user info          |
+
+### 📁 Portfolios
+
+| Method | Endpoint                        | Description                      |
+|--------|----------------------------------|----------------------------------|
+| GET    | `/portfolios`                   | Get all portfolios               |
+| POST   | `/portfolios`                   | Create new portfolio             |
+| DELETE | `/portfolios/:id`               | Delete a portfolio               |
+| GET    | `/portfolios/:id/stats`         | Portfolio summary (P/L, total)   |
+| GET    | `/portfolios/:id/analytics`     | CAGR + current stats             |
+| GET    | `/portfolios/:id/stocks`        | Asset-wise distribution          |
+| GET    | `/portfolios/:id/best-worst`    | Best/worst performers            |
+| GET    | `/portfolios/:id/performance`   | Time-series performance data     |
+
+### 💼 Holdings
+
+| Method | Endpoint                            | Description                          |
+|--------|--------------------------------------|--------------------------------------|
+| POST   | `/portfolios/:id/holdings`           | Add a holding (buy/sell logic)       |
+| GET    | `/portfolios/:id/holdings`           | Get holdings for a portfolio         |
+| GET    | `/portfolios/:id/summary`            | Enriched summary (live prices)       |
+| GET    | `/holdings/:id`                      | Single holding info                  |
+| DELETE | `/holdings/:id`                      | Delete a holding                     |
+
+### 🔁 Transactions
+
+| Method | Endpoint                        | Description                     |
+|--------|----------------------------------|---------------------------------|
+| GET    | `/transactions/holdings/:id`    | Get transaction history         |
+
+### 📉 Prices
+
+| Method | Endpoint               | Description                    |
+|--------|------------------------|--------------------------------|
+| GET    | `/prices/price/:symbol`| Live stock/crypto price        |
+
+### 📤 Exports
+
+| Method | Endpoint                      | Description                  |
+|--------|-------------------------------|------------------------------|
+| GET    | `/exports/portfolios/:id`     | Export holdings to Excel     |
+
+### 🤖 AI Insights
+
+| Method | Endpoint                                | Description                        |
+|--------|------------------------------------------|------------------------------------|
+| GET    | `/insight`                              | Insight for all portfolios         |
+| GET    | `/insight/:portfolioId`                 | Insight for a single portfolio     |
+| GET    | `/ai/insight/:portfolioId/:symbol`      | Insight for one asset              |
+
+---
+
+## 🛠️ Setup Instructions
+
+### 1. Clone Repo
 
 ```bash
-# Clone the repo
 git clone https://github.com/SumanKumar5/InvestMinD.git
-cd InvestMinD/server
-
-# Setup backend
-npm install
-npm run dev
-
-# Setup .env
-PORT=5000
-MONGO_URI=your_atlas_uri
-JWT_SECRET=your_secure_key
-GEMINI_API_KEY=your_google_gemini_api
-TWELVE_API_KEY=your_twelvedata_api_key
+cd InvestMinD
 ```
 
 ---
 
+### 2. Backend Setup
 
-## 📄 License
+```bash
+cd server
+npm install
+cp .env.example .env
+# Fill in: MONGO_URI, JWT_SECRET, EMAIL_USER, GEMINI_API_KEY, etc.
+npm start
+```
 
-MIT License
+Or using Docker:
 
-> Built with precision and purpose by [Suman Kumar](https://github.com/SumanKumar5)
+```bash
+docker build -t investmind-api .
+docker run -p 5000:5000 investmind-api
+```
+
+---
+
+### 3. Frontend Setup
+
+```bash
+cd client
+npm install
+# Set environment variable
+echo "VITE_API_BASE_URL=yourbackendurl" > .env
+npm run dev
+```
+
+---
+
+## 📎 License
+
+This project is licensed under the [MIT License](./LICENSE)  
+Created with ❤️ by [Suman Kumar](https://github.com/SumanKumar5)
+
+---
+
+## 🙌 Acknowledgements
+
+- [Twelve Data](https://twelvedata.com/) for real-time financial data  
+- [Gemini API](https://deepmind.google/technologies/gemini/) for AI-powered investment insights  
+- [DigitalOcean](https://www.digitalocean.com/) and [Vercel](https://vercel.com/) for seamless hosting  

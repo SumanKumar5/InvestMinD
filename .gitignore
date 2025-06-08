@@ -1,9 +1,32 @@
-# Ignore all env files
+# --- ENV Files ---
 .env
 **/.env
+.env.*     # covers .env.local, .env.production, etc.
 
-# Ignore Node dependencies
+# --- Node & Build Dependencies ---
 node_modules/
+**/node_modules/
+
 dist/
-.vscode/
+**/dist/
+
+build/
+**/build/
+
+# --- Logs ---
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- System Files ---
+.DS_Store
+Thumbs.db
+
+# --- IDE Config ---
+.vscode/
+.idea/
+
+# --- Optional: screenshots or cache ---
+screenshots/
+.cache/

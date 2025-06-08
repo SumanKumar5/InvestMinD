@@ -22,6 +22,10 @@ const transactionSchema = new mongoose.Schema({
   executedAt: {
     type: Date,
     default: Date.now
+  },
+  notes: {
+    type: String,
+    maxlength: 200
   }
 });
 

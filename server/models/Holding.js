@@ -22,11 +22,15 @@ const holdingSchema = new mongoose.Schema({
   },
   currency: {
     type: String,
-    default: 'INR'
+    default: 'USD'
   },
   notes: {
     type: String,
     maxlength: 200
+  },
+  companyName: {
+    type: String,
+    trim: true 
   },
   createdAt: {
     type: Date,
