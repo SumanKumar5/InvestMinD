@@ -28,5 +28,4 @@ Thumbs.db
 .idea/
 
 # --- Optional: screenshots or cache ---
-screenshots/
 .cache/
