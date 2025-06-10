@@ -13,14 +13,13 @@
 
 ---
 
-**InvestMinD** is a powerful, modern investment dashboard for tracking portfolios, managing holdings, analyzing performance, and receiving Gemini-powered AI insights. Built with a complete **MERN stack** and deployed on **DigitalOcean** (backend) + **Vercel** (frontend).
+**InvestMinD** is a powerful, modern investment dashboard for tracking portfolios, managing holdings, analyzing performance, and receiving Gemini-powered AI insights. Built with a complete **MERN stack**, custom **FastAPI microservice**, and deployed on **DigitalOcean** (backend + price API) + **Vercel** (frontend).
 
 ---
 
 ## 🌐 Live Demo
 
 🔗 [https://www.investmind.live](https://www.investmind.live)
-
 
 ---
 
@@ -36,7 +35,7 @@
 ```
 investmind-monorepo/
 ├── server/        # Node.js + Express + MongoDB backend
-├── client/       # React + TypeScript + Vite + Tailwind frontend
+├── client/        # React + TypeScript + Vite + Tailwind frontend
 ```
 
 ---
@@ -46,9 +45,11 @@ investmind-monorepo/
 - 🔐 Auth: JWT-based login/signup with OTP email verification
 - 📁 Portfolio: Create/delete portfolios with real-time stats
 - 💼 Holdings: Add/delete holdings, auto price updates, P/L logic
+- 🔁 Transactions: Log and track buy/sell operations per holding
 - 📊 Charts: Time-series, donut, and best/worst performer visualizations
+- 🔍 Symbol Search: Fuzzy search with Fuse.js, autocomplete, and local validation
 - 🤖 Gemini AI: AI-powered summaries per stock or portfolio
-- 📉 Price API: Twelve Data integration for live price fetching
+- 📉 Price API: Real-time pricing via Dockerized FastAPI microservice (yfinance)
 - 📤 Export: Download .xlsx Excel reports with formatting
 - 📱 Fully responsive UI with dark mode and Framer Motion animations
 
@@ -60,15 +61,15 @@ investmind-monorepo/
 |-----------|----------------------------------|
 | Frontend  | React 18, TypeScript, Tailwind, Vite, Recharts |
 | Backend   | Node.js, Express, MongoDB, JWT, Nodemailer |
-| APIs      | Twelve Data API, Google Gemini AI |
-| Hosting   | DigitalOcean App Platform (backend), Vercel (frontend) |
+| APIs      | FastAPI + yfinance, Google Gemini AI |
+| Hosting   | DigitalOcean App Platform (backend & price API), Vercel (frontend) |
 | DevTools  | Docker, ESLint, Prettier, GitHub Actions |
 
 ---
 
 ## 📚 API Documentation
 
-All APIs are prefixed with `/api`.
+All Node.js backend APIs are prefixed with `/api`.
 
 ### 🔐 Auth
 
@@ -109,11 +110,14 @@ All APIs are prefixed with `/api`.
 |--------|----------------------------------|---------------------------------|
 | GET    | `/transactions/holdings/:id`    | Get transaction history         |
 
-### 📉 Prices
+### 📉 Prices (via FastAPI microservice)
 
-| Method | Endpoint               | Description                    |
-|--------|------------------------|--------------------------------|
-| GET    | `/prices/price/:symbol`| Live stock/crypto price        |
+| Method | Endpoint                         | Description                      |
+|--------|----------------------------------|----------------------------------|
+| GET    | `/price?symbol=AAPL`             | Get real-time price and name     |
+
+Hosted separately at:  
+🔗 `https://lionfish-app-kkha4.ondigitalocean.app/price?symbol=AAPL`
 
 ### 📤 Exports
 
@@ -161,7 +165,24 @@ docker run -p 5000:5000 investmind-api
 
 ---
 
-### 3. Frontend Setup
+### 3. FastAPI Price Microservice Setup
+
+```bash
+cd price-api
+pip install -r requirements.txt
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+Or Docker:
+
+```bash
+docker build -t price-service .
+docker run -p 8000:8000 price-service
+```
+
+---
+
+### 4. Frontend Setup
 
 ```bash
 cd client
@@ -182,6 +203,7 @@ Created with ❤️ by [Suman Kumar](https://github.com/SumanKumar5)
 
 ## 🙌 Acknowledgements
 
-- [Twelve Data](https://twelvedata.com/) for real-time financial data  
+- [yfinance](https://github.com/ranaroussi/yfinance) for stock/crypto data via FastAPI  
 - [Gemini API](https://deepmind.google/technologies/gemini/) for AI-powered investment insights  
 - [DigitalOcean](https://www.digitalocean.com/) and [Vercel](https://vercel.com/) for seamless hosting  
+- [Fuse.js](https://fusejs.io/) for fuzzy search autocomplete functionality  
