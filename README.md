@@ -17,20 +17,20 @@
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
-🔗 [https://www.investmind.live](https://www.investmind.live)
+[https://www.investmind.live](https://www.investmind.live)
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 ![Homepage](./client/screenshots/homepage.png)
 ![Dashboard](./client/screenshots/dashboard.png)
 
 ---
 
-## 🧱 Project Structure
+## Project Structure
 
 ```
 investmind-monorepo/
@@ -40,22 +40,22 @@ investmind-monorepo/
 
 ---
 
-## 🚀 Core Features
+## Core Features
 
-- 🔐 Auth: JWT-based login/signup with OTP email verification
-- 📁 Portfolio: Create/delete portfolios with real-time stats
-- 💼 Holdings: Add/delete holdings, auto price updates, P/L logic
-- 🔁 Transactions: Log and track buy/sell operations per holding
-- 📊 Charts: Time-series, donut, and best/worst performer visualizations
-- 🔍 Symbol Search: Fuzzy search with Fuse.js, autocomplete, and local validation
-- 🤖 Gemini AI: AI-powered summaries per stock or portfolio
-- 📉 Price API: Real-time pricing via Dockerized FastAPI microservice (yfinance)
-- 📤 Export: Download .xlsx Excel reports with formatting
-- 📱 Fully responsive UI with dark mode and Framer Motion animations
+- Auth: JWT-based login/signup with OTP email verification
+- Portfolio: Create/delete portfolios with real-time stats
+- Holdings: Add/delete holdings, auto price updates, P/L logic
+- Transactions: Log and track buy/sell operations per holding
+- Charts: Time-series, donut, and best/worst performer visualizations
+- Symbol Search: Fuzzy search with Fuse.js, autocomplete, and local validation
+- Gemini AI: AI-powered summaries per stock or portfolio
+- Price API: Real-time pricing via Dockerized FastAPI microservice (yfinance)
+- Export: Download .xlsx Excel reports with formatting
+- Fully responsive UI with dark mode and Framer Motion animations
 
 ---
 
-## 📦 Tech Stack
+## Tech Stack
 
 | Layer     | Tech                             |
 |-----------|----------------------------------|
@@ -67,11 +67,11 @@ investmind-monorepo/
 
 ---
 
-## 📚 API Documentation
+## API Documentation
 
 All Node.js backend APIs are prefixed with `/api`.
 
-### 🔐 Auth
+### Auth
 
 | Method | Endpoint         | Description                      |
 |--------|------------------|----------------------------------|
@@ -81,7 +81,7 @@ All Node.js backend APIs are prefixed with `/api`.
 | POST   | `/auth/resend-otp`   | Resend verification OTP     |
 | GET    | `/auth/me`       | Get logged-in user info          |
 
-### 📁 Portfolios
+### Portfolios
 
 | Method | Endpoint                        | Description                      |
 |--------|----------------------------------|----------------------------------|
@@ -94,7 +94,7 @@ All Node.js backend APIs are prefixed with `/api`.
 | GET    | `/portfolios/:id/best-worst`    | Best/worst performers            |
 | GET    | `/portfolios/:id/performance`   | Time-series performance data     |
 
-### 💼 Holdings
+### Holdings
 
 | Method | Endpoint                            | Description                          |
 |--------|--------------------------------------|--------------------------------------|
@@ -104,28 +104,28 @@ All Node.js backend APIs are prefixed with `/api`.
 | GET    | `/holdings/:id`                      | Single holding info                  |
 | DELETE | `/holdings/:id`                      | Delete a holding                     |
 
-### 🔁 Transactions
+### Transactions
 
 | Method | Endpoint                        | Description                     |
 |--------|----------------------------------|---------------------------------|
 | GET    | `/transactions/holdings/:id`    | Get transaction history         |
 
-### 📉 Prices (via FastAPI microservice)
+### Prices (via FastAPI microservice)
 
 | Method | Endpoint                         | Description                      |
 |--------|----------------------------------|----------------------------------|
 | GET    | `/price?symbol=AAPL`             | Get real-time price and name     |
 
 Hosted separately at:  
-🔗 `https://lionfish-app-kkha4.ondigitalocean.app/price?symbol=AAPL`
+ `https://lionfish-app-kkha4.ondigitalocean.app/price?symbol=AAPL`
 
-### 📤 Exports
+### Exports
 
 | Method | Endpoint                      | Description                  |
 |--------|-------------------------------|------------------------------|
 | GET    | `/exports/portfolios/:id`     | Export holdings to Excel     |
 
-### 🤖 AI Insights
+### AI Insights
 
 | Method | Endpoint                                | Description                        |
 |--------|------------------------------------------|------------------------------------|
@@ -135,7 +135,7 @@ Hosted separately at:
 
 ---
 
-## 🛠️ Setup Instructions
+## Setup Instructions
 
 ### 1. Clone Repo
 
@@ -194,14 +194,14 @@ npm run dev
 
 ---
 
-## 📎 License
+## License
 
 This project is licensed under the [MIT License](./LICENSE)  
-Created with ❤️ by [Suman Kumar](https://github.com/SumanKumar5)
+Created by [Suman Kumar](https://github.com/SumanKumar5)
 
 ---
 
-## 🙌 Acknowledgements
+## Acknowledgements
 
 - [yfinance](https://github.com/ranaroussi/yfinance) for stock/crypto data via FastAPI  
 - [Gemini API](https://deepmind.google/technologies/gemini/) for AI-powered investment insights  
